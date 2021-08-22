@@ -1,5 +1,5 @@
 INSERT INTO department (name)
-VALUES ("Marketing"), ("Human Resources"), ("Sales"), ("Operations") ("Finance") ("Technology");
+VALUES ("Marketing"), ("Human Resources"), ("Sales"), ("Operations"), ("Finance"), ("Technology");
 
 INSERT INTO role (title, salary, department_id)
 VALUES ('Manager', 175000.00, 1),('Vice President', 350000.00, 2),
