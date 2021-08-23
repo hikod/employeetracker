@@ -33,29 +33,7 @@ function init() {
           }
         })
       }
-      if (answer.option === 'view all roles') {
-        const sql = 'select * from employee_db.role;';
-        db.query(sql, (err, result) => {
-          if (err) {
-            console.log(err)
-          } else {
-            console.log(' Viewing all roles');
-            console.table(result);
-          }
-        })
-      }
-      if (answer.option === 'view all employees') {
-        const sql = 'select * from employee_db.employee;';
-        db.query(sql, (err, result) => {
-          if (err) {
-            console.log(err)
-          } else {
-            console.log(' Viewing all employees');
-            console.table(result);
-          }
-        })
-      }
-      init();
+     init();
     });
 }
 // Function call to initialize app
