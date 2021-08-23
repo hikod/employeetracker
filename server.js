@@ -34,7 +34,7 @@ function init() {
         })
       }
       if (answer.option === 'view all roles') {
-        const sql = 'select * from employee_db.role;';
+        const sql = 'select role.title, role.id,department.name as dept_name, role.salary from employee_db.role left join employee_db.department on department.id= role.department_id;';
         db.query(sql, (err, result) => {
           if (err) {
             console.log(err)
@@ -44,18 +44,8 @@ function init() {
           }
         })
       }
-      if (answer.option === 'view all employees') {
-        const sql = 'select * from employee_db.employee;';
-        db.query(sql, (err, result) => {
-          if (err) {
-            console.log(err)
-          } else {
-            console.log(' Viewing all employees');
-            console.table(result);
-          }
-        })
-      }
-      init();
+      
+     init();
     });
 }
 // Function call to initialize app
