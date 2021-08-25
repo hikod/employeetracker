@@ -28,12 +28,17 @@
 
   ## Screenshots & Additional Info
 
-  ![image](./public/assets/img/1.jpg)
-  ![image](./public/assets/img/2.jpg)
-  ![image](./public/assets/img/3.jpg)
+  ![image](./img/1.jpg)
+  ![image](./img/2.jpg)
+  ![image](./img/3.jpg)
+  ![image](./img/4.jpg)
   
-  The screen recording URL can be found: 
+  The screen recording URL can be found: https://drive.google.com/file/d/1qLzBYfHGt2QPKO4sj0kbsq4FzLWlAPGH/view
   The URL to the repo: https://github.com/hikod/employeetracker
+
+  ## Issues
+
+    - User can't update an employee role
 
   ## Questions 
     
