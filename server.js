@@ -30,8 +30,9 @@ function init() {
           } else {
             console.log(' Viewing all departments');
             console.table(result);
+            init();
           }
-        })
+        });
       }
       if (answer.option === 'view all roles') {
         const sql = 'select role.title, role.id,department.name as dept_name, role.salary from employee_db.role left join employee_db.department on department.id= role.department_id;';
@@ -41,6 +42,7 @@ function init() {
           } else {
             console.log(' Viewing all roles');
             console.table(result);
+            init();
           }
         })
       }
@@ -50,8 +52,9 @@ function init() {
           if (err) {
             console.log(err)
           } else {
-            console.log(' Viewing all roles');
+            console.log(' Viewing all employees');
             console.table(result);
+            init();
           }
         })
       }
@@ -71,7 +74,14 @@ function init() {
             console.log(err)
           } else {
             console.log(' Adding a new department');
-            console.table(result);
+            db.query('select * from employee_db.department;', (err, result) => {
+              if (err){
+                console.log(err);
+              } else 
+              console.table(result);
+            }
+          );
+            init();
           }
         })
       });
@@ -96,13 +106,21 @@ function init() {
         },
         ]).then(answers => {
         console.log(answers);
-        const sql = 'INSERT INTO employee_db.role (title, salary, department_id) VALUES ("' + answers.title + '","' + answers.salary + '","' + answers.department_id + '")';
+        const sql = 'INSERT INTO employee_db.role (title, salary, department_id) VALUES ("' + answers.title + '","' + answers.salary + '",' + answers.department_id + ')';
         db.query(sql, (err, result) => {
           if (err) {
-            console.log(err)
+            console.log(err);
           } else {
             console.log(' Adding a new role');
-            console.table(result);
+            
+              db.query('select * from employee_db.role;', (err, result) => {
+                if (err){
+                  console.log(err);
+                } else 
+                console.table(result);
+                init()
+              }
+            );
           }
         })
       });
@@ -127,26 +145,34 @@ function init() {
         {
           type: 'input',
           name: 'manager',
-          message: 'What will be the name of the manager?',
+          message: 'What will be the id of the manager?',
         }
         ]).then(answers => {
         console.log(answers);
         const manager_id = '';
-        const sql = 'INSERT INTO employee_db.employee (first_name, last_name, role_id, manager_id) VALUES ("' + answers.firstName + '","' + answers.lastName + '","' + answers.role + '", "' + manager_id + '")';
+        const sql = 'INSERT INTO employee_db.employee (first_name, last_name, role_id, manager_id) VALUES ("' + answers.firstName + '","' + answers.lastName + '",' + answers.role + ', ' + manager_id + ')';
         db.query(sql, (err, result) => {
           if (err) {
             console.log(err)
           } else {
-            console.log(' Viewing all employees');
-            console.table(result);
+            console.log(' Adding an Employee');
+            db.query('select * from employee_db.employee;', (err, result) => {
+              if (err){
+                console.log(err);
+              } else 
+              console.table(result);
+              init();
+            }
+          );
           }
         })
       });
+     
       }
       if (answer.option === 'update an employee role'){
-        
+        init();
       }
-     init();
+      
     });
 }
 // Function call to initialize app
