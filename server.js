@@ -50,7 +50,7 @@ function init() {
           if (err) {
             console.log(err)
           } else {
-            console.log(' Viewing all employees');
+            console.log(' Viewing all roles');
             console.table(result);
           }
         })
@@ -70,7 +70,7 @@ function init() {
           if (err) {
             console.log(err)
           } else {
-            console.log(' Viewing all employees');
+            console.log(' Adding a new department');
             console.table(result);
           }
         })
@@ -101,7 +101,7 @@ function init() {
           if (err) {
             console.log(err)
           } else {
-            console.log(' Viewing all employees');
+            console.log(' Adding a new role');
             console.table(result);
           }
         })
