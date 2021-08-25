@@ -105,7 +105,7 @@ function init() {
         },
         ]).then(answers => {
         console.log(answers);
-        const sql = 'INSERT INTO employee_db.role (title, salary, department_id) VALUES ("' + answers.title + '","' + answers.salary + '",' + answers.department_id + ')';
+        const sql = 'INSERT INTO employee_db.role (title, salary, department_id) VALUES ("' + answers.title + '","' + answers.salary + '",' + answers.department_id + ');';
         db.query(sql, (err, result) => {
           if (err) {
             console.log(err);
@@ -128,28 +128,29 @@ function init() {
         inquirer.prompt([
           {
               type: 'input',
-              name: 'firstName',
+              name: 'first_name',
               message: 'What is the new employee first name?',
           },
           {
             type: 'input',
-            name: 'lastName',
+            name: 'last_name',
             message: 'What is the new employee last name?',
         },
         {
           type: 'input',
-          name: 'role',
+          name: 'role_id',
           message: 'What is the role for the new employee?',
         },
         {
           type: 'input',
-          name: 'manager',
+          name: 'manager_id',
           message: 'What will be the id of the manager?',
         }
         ]).then(answers => {
         console.log(answers);
         const manager_id = '';
-        const sql = 'INSERT INTO employee_db.employee (first_name, last_name, role_id, manager_id) VALUES ("' + answers.firstName + '","' + answers.lastName + '",' + answers.role + ', ' + manager_id + ')';
+        const sql = 'INSERT INTO employee_db.employee (first_name, last_name, role_id, manager_id) VALUES ("' + answers.first_name + '","' + answers.last_name + '",' + answers.role_id + ', ' + answers.manager_id + ');';
+        console.log(sql);
         db.query(sql, (err, result) => {
           if (err) {
             console.log(err)
