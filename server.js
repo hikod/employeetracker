@@ -9,7 +9,6 @@ const cTable = require('console.table');
 db.connect(err => {
   if (err) throw err;
   console.log('Database connected.');
-  //drop database and re-create
 
 });
 
@@ -170,6 +169,34 @@ function init() {
      
       }
       if (answer.option === 'update an employee role'){
+
+        let employeeId = null;
+        db.query('SELECT id, first_name, last_name FROM employee_db.employee', (err, res) => {
+          if (err){
+            console.log(err)
+          }
+          let choicesArray = [];
+          res.forEach((employee) => {
+            console.log(employee.first_name+' '+employee.last_name);
+            choicesArray.push(employee.first_name + ' ' + employee.last_name);
+          })
+
+          inquirer.prompt([
+            {
+                type: "list",
+                name: "choice",
+                message: 'Which employee role would you like to update?',
+                choices:  choicesArray,
+              
+            },]).then(answer => {
+            
+                employeeId = choicesArray.indexOf(answer.choice);
+                console.log('employe id is '+  employeeId);
+            
+
+              
+            })
+        });
         init();
       }
       
